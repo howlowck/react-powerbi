@@ -1,0 +1,58 @@
+{
+  "name": "react-powerbi",
+  "version": "0.1.0",
+  "description": "Easily embed your PowerBI Dashboard to your React App",
+  "main": "lib/library.js",
+  "scripts": {
+    "build": "webpack --env build",
+    "dev": "webpack --progress --colors --watch --env dev",
+    "test": "mocha --compilers js:babel-core/register --colors -r jsdom-global/register ./test/*.spec.js",
+    "test:watch": "mocha --compilers js:babel-core/register --colors -r jsdom-global/register -w ./test/*.spec.js"
+  },
+  "devDependencies": {
+    "babel-cli": "6.24.1",
+    "babel-core": "6.24.1",
+    "babel-eslint": "7.2.3",
+    "babel-loader": "7.0.0",
+    "babel-plugin-add-module-exports": "0.2.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "chai": "3.5.0",
+    "enzyme": "^3.1.0",
+    "enzyme-adapter-react-16": "^1.0.2",
+    "eslint": "3.19.0",
+    "eslint-loader": "1.7.1",
+    "jsdom": "^11.3.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "3.3.0",
+    "react-addons-test-utils": "^15.6.2",
+    "react-dom": "^16.0.0",
+    "react-test-renderer": "^16.0.0",
+    "sinon": "^4.0.2",
+    "webpack": "^2.7.0",
+    "yargs": "7.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/howlowck/react-powerbi"
+  },
+  "keywords": [
+    "powerbi",
+    "react",
+    "powerbi embedded",
+    "embedded",
+    "BI",
+    "components",
+    "react component"
+  ],
+  "author": "Hao Luo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/howlowck/react-powerbi/issues"
+  },
+  "homepage": "https://github.com/howlowck/react-powerbi",
+  "dependencies": {
+    "powerbi-client": "^2.4.1",
+    "react": "^16.0.0"
+  }
+}
