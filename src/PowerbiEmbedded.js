@@ -1,4 +1,4 @@
-import {Component} from 'react'
+import React from 'react'
 
 import * as powerbi from 'powerbi-client'
 
@@ -15,7 +15,7 @@ import * as powerbi from 'powerbi-client'
 //   height?: 900;
 // }
 
-class PowerbiEmbedded extends Component {
+class PowerbiEmbedded extends React.Component {
   constructor (props) {
     super(props)
     this.component = null
