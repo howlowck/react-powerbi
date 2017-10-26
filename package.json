@@ -1,6 +1,6 @@
 {
   "name": "react-powerbi",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Easily embed your PowerBI Dashboard to your React App",
   "main": "lib/react-powerbi.min.js",
   "scripts": {
@@ -55,7 +55,6 @@
     "powerbi-client": "^2.4.1"
   },
   "peerDependencies": {
-    "react": "^14.0.0"
-
+    "react": "~0.13.x || ~0.14.x || ^15.0.0 || ^16.0.0"
   }
 }
