@@ -5,7 +5,7 @@ import { expect } from 'chai'
 import { mount, configure } from 'enzyme'
 import sinon from 'sinon'
 import Adapter from 'enzyme-adapter-react-16'
-import PowerbiEmbedded from '../lib/Library.min.js'
+import PowerbiEmbedded from '../lib/react-powerbi.min.js'
 
 configure({ adapter: new Adapter() })
 

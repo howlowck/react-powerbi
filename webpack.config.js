@@ -5,7 +5,7 @@ const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin
 const path = require('path')
 const env = require('yargs').argv.env // use --env with webpack 2
 
-let libraryName = 'Library'
+let libraryName = 'react-powerbi'
 
 let plugins = []
 let outputFile
@@ -47,7 +47,8 @@ const config = {
     extensions: ['.json', '.js']
   },
   externals: {
-    'jsdom': 'window'
+    'jsdom': 'window',
+    'react': 'react'
   },
   plugins: plugins
 }

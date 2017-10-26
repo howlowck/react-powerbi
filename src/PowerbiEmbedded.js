@@ -15,7 +15,7 @@ import * as powerbi from 'powerbi-client'
 //   height?: 900;
 // }
 
-export class PowerbiEmbed extends Component {
+class PowerbiEmbedded extends Component {
   constructor (props) {
     super(props)
     this.component = null
@@ -97,4 +97,4 @@ export class PowerbiEmbed extends Component {
 //   accessToken: React.PropTypes.string,
 //   embedUrl: React.PropTypes.string
 // }
-export default PowerbiEmbed
+export default PowerbiEmbedded
