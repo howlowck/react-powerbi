@@ -1,6 +1,6 @@
 {
   "name": "react-powerbi",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Easily embed your PowerBI Dashboard to your React App",
   "main": "lib/react-powerbi.min.js",
   "scripts": {
