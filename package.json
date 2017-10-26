@@ -52,7 +52,10 @@
   },
   "homepage": "https://github.com/howlowck/react-powerbi",
   "dependencies": {
-    "powerbi-client": "^2.4.1",
-    "react": "^16.0.0"
+    "powerbi-client": "^2.4.1"
+  },
+  "peerDependencies": {
+    "react": "^14.0.0"
+
   }
 }
