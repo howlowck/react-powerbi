@@ -1,19 +1,6 @@
 import React from 'react'
-
 import * as pbi from 'powerbi-client'
 
-// export interface IProps {
-//   id: string;
-//   accessToken: string;
-//   embedUrl: string;
-//   pageName?: string;
-//   filters?: pbi.models.IFilter[];
-//   filterPaneEnabled?: boolean;
-//   navContentPaneEnabled?: boolean;
-//   onEmbedded?: (embed: pbi.Embed) => any;
-//   width?: 600;
-//   height?: 900;
-// }
 const powerbi = new pbi.service.Service(
   pbi.factories.hpmFactory,
   pbi.factories.wpmpFactory,
@@ -94,8 +81,4 @@ class PowerbiEmbedded extends React.Component {
   }
 }
 
-// Report.propTypes = {
-//   accessToken: React.PropTypes.string,
-//   embedUrl: React.PropTypes.string
-// }
 export default PowerbiEmbedded
