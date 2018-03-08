@@ -17,7 +17,7 @@ class App extends Component {
         <PowerbiEmbedded
           id={`${YOUR_REPORT_ID}`}
           embedUrl={`${YOUR_EMBED_URL}`}
-          accessToken={`${YOUR_ACCESS_TOKEN}`}
+          accessToken={`${YOUR_EMBED_TOKEN}`}
           filterPaneEnabled={false}
           navContentPaneEnabled={false}
           width='600px'
