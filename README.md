@@ -32,4 +32,4 @@ export default App
 ```
 
 ## TODO
-- [] Add .d.ts file for typescript
+- [ ] Add .d.ts file for typescript
