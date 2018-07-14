@@ -30,6 +30,13 @@ class App extends Component {
 
 export default App
 ```
+#### Mobile Optimization
+  You only need to add **mobile** prop as boolean. 
+
+  That set a configuration `{ layoutType: models.LayoutType.MobilePortrait }`.
+
+  Check this [reference](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-For-Mobile)
+
 
 ## TODO
 - [ ] Add .d.ts file for typescript
