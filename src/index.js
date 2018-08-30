@@ -47,7 +47,8 @@ class PowerbiEmbedded extends React.Component {
     const nextState = Object.assign({}, this.state, props, {
       settings: {
         filterPaneEnabled: this.props.filterPaneEnabled,
-        navContentPaneEnabled: this.props.navContentPaneEnabled
+        navContentPaneEnabled: this.props.navContentPaneEnabled,
+        layoutType: this.props.mobile ? pbi.models.LayoutType.MobilePortrait : undefined
       }
     })
     /**
