@@ -45,6 +45,7 @@ class PowerbiEmbedded extends React.Component {
 
   updateState (props) {
     const nextState = Object.assign({}, this.state, props, {
+      pageName: this.props.pageName,
       settings: {
         filterPaneEnabled: this.props.filterPaneEnabled,
         navContentPaneEnabled: this.props.navContentPaneEnabled,
