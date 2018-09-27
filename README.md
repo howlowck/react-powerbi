@@ -20,6 +20,7 @@ class App extends Component {
           accessToken={`${YOUR_EMBED_TOKEN}`}
           filterPaneEnabled={false}
           navContentPaneEnabled={false}
+          pageName={`${YOUR_PAGE_ID}`}
           width='600px'
           height='900px'
         />
