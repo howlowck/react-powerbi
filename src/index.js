@@ -63,11 +63,7 @@ class PowerbiEmbedded extends React.Component {
   }
 
   validateConfig (config) {
-    console.log(config)
     const errors = pbi.models.validateReportLoad(config)
-
-    // console.dir(pbi.service.Service)
-    console.log('error', errors)
     return (errors === undefined)
   }
 
