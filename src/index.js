@@ -50,8 +50,10 @@ class PowerbiEmbedded extends React.Component {
         filterPaneEnabled: this.props.filterPaneEnabled,
         navContentPaneEnabled: this.props.navContentPaneEnabled,
         layoutType: this.props.mobile ? pbi.models.LayoutType.MobilePortrait : undefined
-      }
+      },
+      type: this.props.embedType ? this.props.embedType : 'report'
     })
+
     /**
      * This property must be removed from the state object so that it doesn't get used in the embedConfig.
      * This would be passed to `powerbi.embed(element, embedConfig)` and attempted to be sent over postMessage;
@@ -64,6 +66,7 @@ class PowerbiEmbedded extends React.Component {
 
   validateConfig (config) {
     const errors = pbi.models.validateReportLoad(config)
+
     return (errors === undefined)
   }
 
