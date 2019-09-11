@@ -22,6 +22,7 @@ class App extends Component {
           navContentPaneEnabled={false}
           pageName={`${YOUR_PAGE_ID}`}
           embedType={`${EMBED_TYPE}`}
+          tokenType={`${TOKEN_TYPE}`}
           width='600px'
           height='900px'
         />
