@@ -1,21 +1,27 @@
 /* global __dirname, require, module */
-
 const webpack = require('webpack')
-const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path')
 const env = require('yargs').argv.env // use --env with webpack 2
 
 let libraryName = 'react-powerbi'
 
-let plugins = []
-let outputFile
+let plugins = 
+  [
+    new CleanWebpackPlugin()
+  ]
+
+let rootName = libraryName
 
 if (env === 'build') {
-  plugins.push(new UglifyJsPlugin({ minimize: true }))
-  outputFile = libraryName + '.min.js'
-} else {
-  outputFile = libraryName + '.js'
+  rootName += '.min'
 }
+const outputFile = rootName + '.js'
+
+plugins.push(new CopyPlugin(
+  [{ from: './src/index.d.ts', to: rootName+'.d.ts' }]
+  ))
 
 const config = {
   entry: './src/index.js',
