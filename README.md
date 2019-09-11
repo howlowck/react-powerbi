@@ -44,4 +44,4 @@ export default App
 The embed type variable allows you to pass in the requested PowerBI "Type", be that a `report`, `dashboard` or `tile`. See [reference](https://microsoft.github.io/PowerBI-JavaScript/interfaces/_src_embed_.iembedconfigurationbase.html#type). By default, `report` is selected.
 
 ## TODO
-- [ ] Add .d.ts file for typescript
+- [x] Add .d.ts file for typescript (Thanks @Joonaspraks!)
