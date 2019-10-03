@@ -20,7 +20,7 @@ class PowerbiEmbedded extends React.Component {
     this.updateState(this.props)
   }
 
-  componentWillReceiveProps (nextProps) {
+  UNSAFE_componentWillReceiveProps (nextProps) {
     this.updateState(nextProps)
   }
 
