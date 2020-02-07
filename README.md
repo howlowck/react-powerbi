@@ -23,6 +23,7 @@ class App extends Component {
           pageName={`${YOUR_PAGE_ID}`}
           embedType={`${EMBED_TYPE}`}
           tokenType={`${TOKEN_TYPE}`}
+          permissions={`${PERMISSIONS}`}
           width='600px'
           height='900px'
         />
