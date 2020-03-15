@@ -1,6 +1,6 @@
 import React from 'react'
+import { TokenType, Permissions } from 'powerbi-models'
 import * as pbi from 'powerbi-client'
-
 const powerbi = new pbi.service.Service(
   pbi.factories.hpmFactory,
   pbi.factories.wpmpFactory,
@@ -51,6 +51,8 @@ class PowerbiEmbedded extends React.Component {
         navContentPaneEnabled: this.props.navContentPaneEnabled,
         layoutType: this.props.mobile ? pbi.models.LayoutType.MobilePortrait : undefined
       },
+      permissions: this.props.permissions ? Permissions[this.props.permissions] : 7,
+      tokenType: this.props.tokenType ? TokenType[this.props.tokenType] : 1,
       type: this.props.embedType ? this.props.embedType : 'report'
     })
 

@@ -56,7 +56,7 @@
   },
   "homepage": "https://github.com/howlowck/react-powerbi",
   "dependencies": {
-    "powerbi-client": "^2.7.4"
+    "powerbi-client": "^2.10.3"
   },
   "peerDependencies": {
     "react": "~0.13.x || ~0.14.x || ^15.0.0 || ^16.0.0"
