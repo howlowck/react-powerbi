@@ -1,13 +1,12 @@
-/* global __dirname, require, module */
-const webpack = require('webpack')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path')
+const webpack = require('webpack')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const { TsConfigPathsPlugin } = require('awesome-typescript-loader')
 const env = require('yargs').argv.env // use --env with webpack 2
 
-let libraryName = 'react-powerbi'
+const libraryName = 'react-powerbi'
 
-let plugins = 
+const plugins =
   [
     new CleanWebpackPlugin()
   ]
@@ -19,12 +18,8 @@ if (env === 'build') {
 }
 const outputFile = rootName + '.js'
 
-plugins.push(new CopyPlugin(
-  [{ from: './src/index.d.ts', to: rootName+'.d.ts' }]
-  ))
-
 const config = {
-  entry: './src/index.js',
+  entry: './src/index.tsx',
   devtool: 'source-map',
   context: __dirname,
   output: {
@@ -37,20 +32,23 @@ const config = {
   module: {
     rules: [
       {
-        test: /(\.jsx|\.js)$/,
+        test: /\.(ts|js)x?$/,
         loader: 'babel-loader',
         exclude: /(node_modules|bower_components)/
       },
       {
-        test: /(\.jsx|\.js)$/,
-        loader: 'eslint-loader',
+        test: /(\.tsx|\.ts)$/,
+        loader: 'awesome-typescript-loader',
         exclude: /node_modules/
       }
     ]
   },
   resolve: {
     modules: [path.resolve('./node_modules'), path.resolve('./src')],
-    extensions: ['.json', '.js']
+    extensions: ['.json', '.js', '.ts', '.tsx'],
+    plugins: [new TsConfigPathsPlugin({
+      tsconfig: __dirname + '/tsconfig.json'
+    })]
   },
   externals: {
     'jsdom': 'window',

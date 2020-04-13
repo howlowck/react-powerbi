@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "jsx": "preserve",
+    "noEmit": true,
+    "strict": true,
+    "allowJs": true,
+    "baseUrl": "./src",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": ["node"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strictPropertyInitialization": false,
+    "declaration": true,
+    "outDir": "lib"
+  },
+  "include": ["src"]
+}
