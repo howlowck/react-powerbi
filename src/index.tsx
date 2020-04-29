@@ -21,7 +21,7 @@ type PowerbiEmbeddedProps = Pick<IEmbedConfiguration,
 'accessToken' |
 'permissions'> & {
   onEmbedded?: (embed: Embed) => void;
-  embedType: EmbedType;
+  embedType?: EmbedType;
   mobile?: boolean;
   filterPaneEnabled?: boolean;
   navContentPaneEnabled?: boolean;
