@@ -27,7 +27,7 @@ type PowerbiEmbeddedProps = Pick<IEmbedConfiguration,
   navContentPaneEnabled?: boolean;
 };
 
-export default function PowerbiEmbedded ({ onEmbedded, ...props }: PowerbiEmbeddedProps): JSX.Element {
+const PowerbiEmbedded: React.FC<PowerbiEmbeddedProps> = ({ onEmbedded, ...props }: PowerbiEmbeddedProps) => {
   const component = useRef<Embed | null>()
   const rootElement = useRef<HTMLElement>()
   const [ config, setConfig ] = useState<IEmbedConfiguration>({ type: 'report' })
@@ -89,3 +89,5 @@ export default function PowerbiEmbedded ({ onEmbedded, ...props }: PowerbiEmbedd
       style={{ width: props.width, height: props.height }} />
   )
 }
+
+export default PowerbiEmbedded
