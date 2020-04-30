@@ -44,12 +44,11 @@ const PowerbiEmbedded: React.FC<PowerbiEmbeddedProps> = ({ onEmbedded, ...props 
 
   useEffect(() => {
     setConfig(prevConfig => {
-      const { embedType, mobile, pageName, tokenType, permissions, filterPaneEnabled, navContentPaneEnabled } = props
+      const { embedType, mobile, tokenType, permissions, filterPaneEnabled, navContentPaneEnabled, ...rest } = props
 
       return {
         ...prevConfig,
-        ...props,
-        pageName,
+        ...rest,
         settings: {
           filterPaneEnabled,
           navContentPaneEnabled,
