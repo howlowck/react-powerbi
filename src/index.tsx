@@ -11,26 +11,22 @@ const powerbi = new service.Service(
 
 type EmbedType = 'report' | 'dashboard' | 'tile'
 
-type PowerbiEmbeddedProps = Pick<IEmbedConfiguration,
-'id' |
-'width' |
-'height' |
-'pageName' |
-'embedUrl' |
-'tokenType' |
-'accessToken' |
-'permissions'> & {
+interface ExtraSettings {
   onEmbedded?: (embed: Embed) => void;
   embedType?: EmbedType;
   mobile?: boolean;
   filterPaneEnabled?: boolean;
   navContentPaneEnabled?: boolean;
-};
+}
 
-const PowerbiEmbedded: React.FC<PowerbiEmbeddedProps> = ({ onEmbedded, ...props }: PowerbiEmbeddedProps) => {
+interface PowerbiEmbeddedProps extends IEmbedConfiguration, ExtraSettings {
+}
+
+const PowerbiEmbedded: React.FC<PowerbiEmbeddedProps> = (props: PowerbiEmbeddedProps) => {
+  const { onEmbedded, embedType } = props
   const component = useRef<Embed | null>()
   const rootElement = useRef<HTMLElement>()
-  const [ config, setConfig ] = useState<IEmbedConfiguration>({ type: 'report' })
+  const [ config, setConfig ] = useState<IEmbedConfiguration>({ type: embedType })
 
   const embed = useCallback(config => {
     component.current = powerbi.embed(rootElement.current as HTMLElement, config)
@@ -87,6 +83,10 @@ const PowerbiEmbedded: React.FC<PowerbiEmbeddedProps> = ({ onEmbedded, ...props 
       ref={(el: HTMLDivElement): void => { rootElement.current = el }}
       style={{ width: props.width, height: props.height }} />
   )
+}
+
+PowerbiEmbedded.defaultProps = {
+  embedType: 'report'
 }
 
 export default PowerbiEmbedded

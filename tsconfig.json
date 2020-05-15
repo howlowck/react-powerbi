@@ -11,7 +11,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "types": ["node"],
+    "types": ["node", "jest"],
     "module": "esnext",
     "moduleResolution": "node",
     "strictPropertyInitialization": false,

@@ -7,11 +7,15 @@
   "scripts": {
     "build": "webpack --env build --mode=production",
     "dev": "webpack --progress --colors --watch --env dev ",
-    "test": "mocha --compilers js:babel-core/register --colors -r jsdom-global/register ./test/*.spec.js",
-    "test:watch": "mocha --compilers js:babel-core/register --colors -r jsdom-global/register -w ./test/*.spec.js"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "devDependencies": {
+    "@types/enzyme": "^3.10.5",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
+    "@types/jest": "^25.2.2",
     "@types/react": "^16.9.34",
+    "@types/sinon": "^9.0.1",
     "@typescript-eslint/eslint-plugin": "^2.27.0",
     "@typescript-eslint/parser": "^2.27.0",
     "awesome-typescript-loader": "^5.2.1",
@@ -20,22 +24,23 @@
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
-    "chai": "3.5.0",
     "clean-webpack-plugin": "^3.0.0",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.4.4",
     "eslint": "^6.8.0",
     "eslint-loader": "^4.0.0",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^3.0.0",
+    "jest": "^25.0.0",
     "jsdom": "^11.12.0",
     "jsdom-global": "^3.0.2",
-    "mocha": "^5.2.0",
     "react": "^16.13.1",
     "react-addons-test-utils": "^15.6.2",
     "react-dom": "^16.13.1",
     "react-test-renderer": "^16.13.1",
     "sinon": "^4.5.0",
+    "ts-jest": "^25.5.1",
     "typescript": "^3.8.3",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
@@ -61,9 +66,10 @@
   },
   "homepage": "https://github.com/howlowck/react-powerbi",
   "dependencies": {
+    "react": "^16.8.0",
     "powerbi-client": "^2.11.0"
   },
   "peerDependencies": {
-    "react": "~0.13.x || ~0.14.x || ^15.0.0 || ^16.0.0"
+    "react": "^16.8.0"
   }
 }
