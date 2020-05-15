@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a component 1`] = `
+<div
+  className="powerbi-frame"
+  style={
+    Object {
+      "height": undefined,
+      "width": undefined,
+    }
+  }
+/>
+`;
