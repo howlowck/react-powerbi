@@ -11,7 +11,7 @@ const powerbi = new service.Service(
 
 type EmbedType = 'report' | 'dashboard' | 'tile'
 
-interface ExtraSettings {
+type ExtraSettings = {
   onEmbedded?: (embed: Embed) => void;
   embedType?: EmbedType;
   mobile?: boolean;
@@ -19,10 +19,9 @@ interface ExtraSettings {
   navContentPaneEnabled?: boolean;
 }
 
-interface PowerbiEmbeddedProps extends IEmbedConfiguration, ExtraSettings {
-}
+type PowerBIEmbeddedProps = IEmbedConfiguration & ExtraSettings
 
-const PowerbiEmbedded: React.FC<PowerbiEmbeddedProps> = (props: PowerbiEmbeddedProps) => {
+const PowerBIEmbedded: React.FC<PowerBIEmbeddedProps> = (props: PowerBIEmbeddedProps) => {
   const { onEmbedded, embedType } = props
   const component = useRef<Embed | null>()
   const rootElement = useRef<HTMLElement>()
@@ -40,12 +39,13 @@ const PowerbiEmbedded: React.FC<PowerbiEmbeddedProps> = (props: PowerbiEmbeddedP
 
   useEffect(() => {
     setConfig(prevConfig => {
-      const { embedType, mobile, tokenType, permissions, filterPaneEnabled, navContentPaneEnabled, ...rest } = props
+      const { embedType, mobile, tokenType, permissions, filterPaneEnabled, navContentPaneEnabled, settings, ...rest } = props
 
       return {
         ...prevConfig,
         ...rest,
         settings: {
+          ...settings,
           filterPaneEnabled,
           navContentPaneEnabled,
           layoutType: mobile ? models.LayoutType.MobilePortrait : undefined
@@ -85,8 +85,8 @@ const PowerbiEmbedded: React.FC<PowerbiEmbeddedProps> = (props: PowerbiEmbeddedP
   )
 }
 
-PowerbiEmbedded.defaultProps = {
+PowerBIEmbedded.defaultProps = {
   embedType: 'report'
 }
 
-export default PowerbiEmbedded
+export default PowerBIEmbedded

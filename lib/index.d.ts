@@ -1,14 +1,13 @@
 import React from 'react';
 import { IEmbedConfiguration, Embed } from 'embed';
 declare type EmbedType = 'report' | 'dashboard' | 'tile';
-interface ExtraSettings {
+declare type ExtraSettings = {
     onEmbedded?: (embed: Embed) => void;
     embedType?: EmbedType;
     mobile?: boolean;
     filterPaneEnabled?: boolean;
     navContentPaneEnabled?: boolean;
-}
-interface PowerbiEmbeddedProps extends IEmbedConfiguration, ExtraSettings {
-}
-declare const PowerbiEmbedded: React.FC<PowerbiEmbeddedProps>;
-export default PowerbiEmbedded;
+};
+declare type PowerBIEmbeddedProps = IEmbedConfiguration & ExtraSettings;
+declare const PowerBIEmbedded: React.FC<PowerBIEmbeddedProps>;
+export default PowerBIEmbedded;

@@ -1,5 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`accepts props 1`] = `
+<div
+  className="powerbi-frame"
+  style={
+    Object {
+      "height": undefined,
+      "width": undefined,
+    }
+  }
+/>
+`;
+
 exports[`renders a component 1`] = `
 <div
   className="powerbi-frame"
