@@ -15,15 +15,18 @@ class App extends Component {
     return (
       <div className='App'>
         <PowerbiEmbedded
-          id={`${YOUR_REPORT_ID}`}
-          embedUrl={`${YOUR_EMBED_URL}`}
-          accessToken={`${YOUR_EMBED_TOKEN}`}
+          id={`${YOUR_REPORT_ID}`} // required
+          embedUrl={`${YOUR_EMBED_URL}`} // required
+          accessToken={`${YOUR_EMBED_TOKEN}`} // required
           filterPaneEnabled={false}
           navContentPaneEnabled={false}
           pageName={`${YOUR_PAGE_ID}`}
           embedType={`${EMBED_TYPE}`}
           tokenType={`${TOKEN_TYPE}`}
           permissions={`${PERMISSIONS}`}
+          settings={{
+            // any settings including localeSettings
+          }}
           width='600px'
           height='900px'
         />
