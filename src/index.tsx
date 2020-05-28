@@ -12,7 +12,7 @@ const powerbi = new service.Service(
 type EmbedType = 'report' | 'dashboard' | 'tile'
 
 type ExtraSettings = {
-  onEmbedded?: (embed: Embed) => void;
+  onEmbedded?: () => void;
   embedType?: EmbedType;
   mobile?: boolean;
   filterPaneEnabled?: boolean;
@@ -31,7 +31,7 @@ const PowerBIEmbedded: React.FC<PowerBIEmbeddedProps> = (props: PowerBIEmbeddedP
     component.current = powerbi.embed(rootElement.current as HTMLElement, config)
 
     if (onEmbedded) {
-      onEmbedded(component.current)
+      onEmbedded()
     }
 
     return component.current
