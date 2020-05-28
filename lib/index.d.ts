@@ -1,8 +1,8 @@
 import React from 'react';
-import { IEmbedConfiguration, Embed } from 'embed';
+import { IEmbedConfiguration } from 'embed';
 declare type EmbedType = 'report' | 'dashboard' | 'tile';
 declare type ExtraSettings = {
-    onEmbedded?: (embed: Embed) => void;
+    onEmbedded?: () => void;
     embedType?: EmbedType;
     mobile?: boolean;
     filterPaneEnabled?: boolean;
