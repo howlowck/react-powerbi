@@ -39,7 +39,16 @@ const PowerBIEmbedded: React.FC<PowerBIEmbeddedProps> = (props: PowerBIEmbeddedP
 
   useEffect(() => {
     setConfig(prevConfig => {
-      const { embedType, mobile, tokenType, permissions, filterPaneEnabled, navContentPaneEnabled, settings, ...rest } = props
+      const {
+        embedType,
+        mobile,
+        tokenType,
+        permissions,
+        filterPaneEnabled,
+        navContentPaneEnabled,
+        settings,
+        ...rest
+      } = props
 
       return {
         ...prevConfig,
