@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react'
+import React, { useState, useRef, useEffect, useCallback, ComponentProps } from 'react'
 import { factories, service, models } from 'powerbi-client'
 import { TokenType, Permissions } from 'powerbi-models'
 import { IEmbedConfiguration, Embed } from 'embed'
@@ -11,35 +11,32 @@ const powerbi = new service.Service(
 
 type EmbedType = 'report' | 'dashboard' | 'tile'
 
-type ExtraSettings = {
-  onEmbedded?: (embed: Embed) => void;
+interface PowerBIEmbeddedProps extends IEmbedConfiguration, React.HTMLAttributes<HTMLDivElement> {
+  onLoad?: () => void;
   embedType?: EmbedType;
   mobile?: boolean;
   filterPaneEnabled?: boolean;
   navContentPaneEnabled?: boolean;
 }
 
-type PowerBIEmbeddedProps = IEmbedConfiguration & ExtraSettings
-
 const PowerBIEmbedded: React.FC<PowerBIEmbeddedProps> = (props: PowerBIEmbeddedProps) => {
-  const { onEmbedded, embedType } = props
+  const { embedType } = props
   const component = useRef<Embed | null>()
-  const rootElement = useRef<HTMLElement>()
+  const rootElement = useRef<HTMLDivElement>()
   const [ config, setConfig ] = useState<IEmbedConfiguration>({ type: embedType })
-
-  const embed = useCallback(config => {
-    component.current = powerbi.embed(rootElement.current as HTMLElement, config)
-
-    if (onEmbedded) {
-      onEmbedded(component.current)
-    }
-
-    return component.current
-  }, [onEmbedded])
 
   useEffect(() => {
     setConfig(prevConfig => {
-      const { embedType, mobile, tokenType, permissions, filterPaneEnabled, navContentPaneEnabled, settings, ...rest } = props
+      const {
+        embedType,
+        mobile,
+        tokenType,
+        permissions,
+        filterPaneEnabled,
+        navContentPaneEnabled,
+        settings,
+        ...rest
+      } = props
 
       return {
         ...prevConfig,
@@ -65,9 +62,9 @@ const PowerBIEmbedded: React.FC<PowerBIEmbeddedProps> = (props: PowerBIEmbeddedP
     }
 
     if (validateConfig(config)) {
-      embed(config)
+      powerbi.embed(rootElement.current as HTMLDivElement, config)
     }
-  }, [config, embed])
+  }, [config])
 
   useEffect(() => {
     const currentRootElement = rootElement.current as HTMLElement
@@ -79,9 +76,11 @@ const PowerBIEmbedded: React.FC<PowerBIEmbeddedProps> = (props: PowerBIEmbeddedP
   }, [])
 
   return (
-    <div className='powerbi-frame'
+    <div className='powerbi-container'
+      style={{ width: props.width, height: props.height }}
       ref={(el: HTMLDivElement): void => { rootElement.current = el }}
-      style={{ width: props.width, height: props.height }} />
+    >
+    </div>
   )
 }
 

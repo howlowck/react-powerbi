@@ -1,6 +1,6 @@
 {
   "name": "react-powerbi",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Easily embed your PowerBI Dashboard to your React App",
   "main": "lib/react-powerbi.min.js",
   "types": "lib/index.d.ts",
@@ -8,7 +8,8 @@
     "build": "webpack --env build --mode=production",
     "dev": "webpack --progress --colors --watch --env dev ",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "example": "parcel example/index.html"
   },
   "devDependencies": {
     "@types/enzyme": "^3.10.5",
@@ -34,6 +35,7 @@
     "jest": "^25.0.0",
     "jsdom": "^11.12.0",
     "jsdom-global": "^3.0.2",
+    "parcel-bundler": "^1.12.4",
     "react": "^16.13.1",
     "react-addons-test-utils": "^15.6.2",
     "react-dom": "^16.13.1",
