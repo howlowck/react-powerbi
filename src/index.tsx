@@ -25,16 +25,6 @@ const PowerBIEmbedded: React.FC<PowerBIEmbeddedProps> = (props: PowerBIEmbeddedP
   const rootElement = useRef<HTMLDivElement>()
   const [ config, setConfig ] = useState<IEmbedConfiguration>({ type: embedType })
 
-  // const embed = useCallback(config => {
-  //   component.current = powerbi.embed(rootElement.current as HTMLElement, config)
-
-  //   // if (onEmbedded) {
-  //   //   onEmbedded()
-  //   // }
-
-  //   return component.current
-  // }, [])
-
   useEffect(() => {
     setConfig(prevConfig => {
       const {
@@ -73,7 +63,6 @@ const PowerBIEmbedded: React.FC<PowerBIEmbeddedProps> = (props: PowerBIEmbeddedP
 
     if (validateConfig(config)) {
       powerbi.embed(rootElement.current as HTMLDivElement, config)
-      // embed(config)
     }
   }, [config])
 
