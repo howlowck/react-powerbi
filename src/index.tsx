@@ -12,7 +12,7 @@ const powerbi = new service.Service(
 type EmbedType = 'report' | 'dashboard' | 'tile'
 
 interface PowerBIEmbeddedProps extends IEmbedConfiguration, React.HTMLAttributes<HTMLDivElement> {
-  onEmbed?: () => void;
+  // onEmbed?: () => void;
   embedType?: EmbedType;
   mobile?: boolean;
   filterPaneEnabled?: boolean;
