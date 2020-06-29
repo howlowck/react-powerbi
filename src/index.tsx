@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback, ComponentProps, Props } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { factories, service, models } from 'powerbi-client'
 import { TokenType, Permissions } from 'powerbi-models'
 import { IEmbedConfiguration, Embed } from 'embed'
@@ -11,13 +11,14 @@ const powerbi = new service.Service(
 
 type EmbedType = 'report' | 'dashboard' | 'tile'
 
-interface PowerBIEmbeddedProps extends IEmbedConfiguration, React.HTMLAttributes<HTMLDivElement> {
-  // onEmbed?: () => void;
+type ExtraSettings = {
   embedType?: EmbedType;
   mobile?: boolean;
   filterPaneEnabled?: boolean;
   navContentPaneEnabled?: boolean;
 }
+
+type PowerBIEmbeddedProps = React.HTMLAttributes<HTMLDivElement> & IEmbedConfiguration & ExtraSettings
 
 const PowerBIEmbedded: React.FC<PowerBIEmbeddedProps> = (props: PowerBIEmbeddedProps) => {
   const { embedType } = props
@@ -25,18 +26,20 @@ const PowerBIEmbedded: React.FC<PowerBIEmbeddedProps> = (props: PowerBIEmbeddedP
   const rootElement = useRef<HTMLDivElement>()
   const [ embedObj, setEmbedObj ] = useState<Embed>()
 
-  function validateConfig (embedType: PowerBIEmbeddedProps['embedType'] = 'report', config: IEmbedConfiguration): boolean {
+  function validateConfig (
+    embedType: PowerBIEmbeddedProps['embedType'] = 'report', config: IEmbedConfiguration): boolean {
     const validateFuncs = {
       'report': models.validateReportLoad,
       'dashboard': models.validateDashboardLoad,
       'tile': models.validateTileLoad
     }
     const errors = validateFuncs[embedType](config)
+
     console.error('PowerBI Embed Config Error, See Error Array -> ', errors)
     return errors === undefined
   }
 
-  function getConfigFromProps(props: PowerBIEmbeddedProps, prev?: IEmbedConfiguration): IEmbedConfiguration {
+  function getConfigFromProps (props: PowerBIEmbeddedProps, prev?: IEmbedConfiguration): IEmbedConfiguration {
     const {
       embedType,
       mobile,
@@ -66,22 +69,25 @@ const PowerBIEmbedded: React.FC<PowerBIEmbeddedProps> = (props: PowerBIEmbeddedP
   useEffect(() => {
     return (): void => {
       const currentRootElement = rootElement.current as HTMLElement
+
       powerbi.reset(currentRootElement)
       component.current = null
     }
   }, [props.mobile])
 
-
   useEffect(() => {
     console.log('tried to run')
     const config = getConfigFromProps(props)
+
     if (validateConfig(embedType, config)) {
       console.log('validated')
       const embed = powerbi.embed(rootElement.current as HTMLDivElement, config)
+
       setEmbedObj(embed)
     }
     return (): void => {
       const currentRootElement = rootElement.current as HTMLElement
+
       powerbi.reset(currentRootElement)
       component.current = null
     }
@@ -92,6 +98,7 @@ const PowerBIEmbedded: React.FC<PowerBIEmbeddedProps> = (props: PowerBIEmbeddedP
       return
     }
     const config = getConfigFromProps(props)
+
     if (!validateConfig(embedType, config)) {
       return
     }
@@ -108,7 +115,7 @@ const PowerBIEmbedded: React.FC<PowerBIEmbeddedProps> = (props: PowerBIEmbeddedP
 }
 
 PowerBIEmbedded.defaultProps = {
-  embedType: 'report',
+  embedType: 'report'
 }
 
 export default PowerBIEmbedded
