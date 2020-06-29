@@ -2,7 +2,7 @@
 
 exports[`accepts props 1`] = `
 <div
-  className="powerbi-frame"
+  className="powerbi-container"
   style={
     Object {
       "height": undefined,
@@ -14,7 +14,7 @@ exports[`accepts props 1`] = `
 
 exports[`renders a component 1`] = `
 <div
-  className="powerbi-frame"
+  className="powerbi-container"
   style={
     Object {
       "height": undefined,
